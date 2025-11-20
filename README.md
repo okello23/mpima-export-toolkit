@@ -40,21 +40,6 @@ This tool eliminates manual troubleshooting by guiding teams through a structure
 
 ---
 
-## 📂 Project Structure
-
-mpima-alis-export-patcher/
-│── scripts/
-│ ├── step1-check-environment.sh
-│ ├── step2-setup-proxy.sh
-│ ├── step3-validate-export.sh
-│ ├── step4-run-diagnostics.sh
-│── mpima-export-patcher.sh # Main orchestrator script
-│── README.md
-
-
-
----
-
 ## 🔧 Requirements
 
 - Ubuntu Server 16/18/20/22  
@@ -119,5 +104,5 @@ iii. Produces a final status report
 
 ## 🧪 Simulation Mode
 To test without touching production:
-sudo ./mpima-export-patcher.sh --simulate
+`sudo ./mpima-export-patcher.sh --simulate`
 
