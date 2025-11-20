@@ -41,13 +41,20 @@ run_script() {
   echo "----> Completed ${SCRIPT}" | tee -a "${RUN_LOG}"
 }
 
-# === Run Steps ===
+# STEP 1: Environment check
 run_script "scripts/step1-check-environment.sh"
+
+# STEP 2: Install vsftpd (robust version)
 run_script "scripts/step2-install-vsftpd.sh"
+
+# STEP 3: Fix PAM configuration
 run_script "scripts/step3-fix-pam.sh"
+
+# STEP 4: Configure firewall (checks if UFW active)
 run_script "scripts/step4-firewall.sh"
+
+# STEP 5: Finalize vsftpd setup, restart & enable service
 run_script "scripts/step5-finalize.sh"
 
 echo "Run finished: $(date -u)" | tee -a "${RUN_LOG}"
 echo "Logs saved to ${LOGDIR}/"
-

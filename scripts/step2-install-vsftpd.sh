@@ -1,20 +1,37 @@
 #!/usr/bin/env bash
+# Step 2: Install vsftpd (with support for custom sources.list)
+# Works on Ubuntu 16.04 → 20.04 [not tested on later ubuntu versions]
+# Supports simulator mode: --simulate or -n
+
 SIMULATE=false
 [[ "$1" == "--simulate" ]] && SIMULATE=true
+[[ "$1" == "-n" ]] && SIMULATE=true
 
 echo "=== STEP 2: Installing vsftpd ==="
 
-# Ensure universe repository is enabled (required for vsftpd on Ubuntu 16.04)
-echo "Checking if universe repository is enabled..."
+# Ensure universe repo is enabled
 if $SIMULATE; then
-    echo "[SIMULATOR] Would enable universe repository and update apt"
+    echo "[SIMULATOR] Would check/enable universe repository"
 else
-    sudo add-apt-repository universe -y
+    echo "Checking universe repository..."
+    sudo add-apt-repository universe -y || true
     sudo apt update
 fi
 
+# Check if vsftpd is available
+if ! apt-cache policy vsftpd | grep -q Candidate; then
+    echo "⚠ vsftpd not found in current repos!"
+    if $SIMULATE; then
+        echo "[SIMULATOR] Would add temporary official Ubuntu universe repo"
+    else
+        TEMP_REPO="/etc/apt/sources.list.d/temp-focal-universe.list"
+        echo "Adding temporary official Ubuntu universe repo for vsftpd..."
+        echo "deb http://archive.ubuntu.com/ubuntu focal universe" | sudo tee "$TEMP_REPO"
+        sudo apt update
+    fi
+fi
+
 # Install vsftpd
-echo "Installing vsftpd package..."
 if $SIMULATE; then
     echo "[SIMULATOR] Would run: sudo apt install -y vsftpd"
 else
@@ -32,7 +49,7 @@ else
     fi
 fi
 
-# Ensure mpima directory exists and has correct permissions
+# Ensure mpima directory exists with correct permissions
 if $SIMULATE; then
     echo "[SIMULATOR] Would create /srv/mpima-export and set ownership"
 else
@@ -42,3 +59,10 @@ else
 fi
 
 echo "STEP 2 completed."
+
+# Optional: Remove temporary repo if added
+if [ -f "/etc/apt/sources.list.d/temp-focal-universe.list" ] && ! $SIMULATE; then
+    echo "Cleaning up temporary repo..."
+    sudo rm -f /etc/apt/sources.list.d/temp-focal-universe.list
+    sudo apt update
+fi

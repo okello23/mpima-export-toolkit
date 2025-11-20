@@ -1,31 +1,24 @@
 #!/usr/bin/env bash
 SIMULATE=false
 [[ "$1" == "--simulate" ]] && SIMULATE=true
+[[ "$1" == "-n" ]] && SIMULATE=true
 
 echo "=== STEP 5: Finalize and restart vsftpd ==="
 
+if ! dpkg -l | grep -q vsftpd; then
+    echo "⚠ vsftpd is not installed. Skipping service restart/enable."
+    exit 1
+fi
+
 if $SIMULATE; then
-    echo "[SIMULATOR] Would create /var/log/vsftpd.log and restart vsftpd"
+    echo "[SIMULATOR] Would touch /var/log/vsftpd.log and restart service"
 else
     sudo touch /var/log/vsftpd.log
     sudo chown ftp:adm /var/log/vsftpd.log 2>/dev/null || true
-
+    sudo systemctl daemon-reload
     sudo systemctl restart vsftpd
     sudo systemctl enable vsftpd
 fi
 
-# Ensure user list
-if $SIMULATE; then
-    echo "[SIMULATOR] Would add mpima to /etc/vsftpd.userlist"
-else
-    echo "mpima" | sudo tee /etc/vsftpd.userlist >/dev/null
-fi
-
-echo "==============================="
-echo "Setup complete!"
-echo "FTP Server ready on port 2121"
-echo "Upload directory: /srv/mpima-export"
-echo "User: mpima"
-echo ""
-echo "Run: sudo passwd mpima  # to set password"
-echo "Test: ftp <server-ip> 2121"
+echo "=== Setup complete! ==="
+echo "FTP ready at port 2121, upload dir: /srv/mpima-export"
