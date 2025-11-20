@@ -114,4 +114,28 @@ iii. Produces a final status report
 ## 🧪 Simulation Mode
 To test without touching production:
 `sudo ./mpima-export-patcher.sh --simulate`
+---
+##🆘 Troubleshooting
+| Issue                    | Cause                  | Solution                            |
+| ------------------------ | ---------------------- | ----------------------------------- |
+| Export not reaching ALIS | Wrong export directory | Ensure `/srv/mpima-export` exists   |
+| Connection timeout       | Proxy misconfiguration | Re-run Step 2                       |
+| FTP login fails          | Wrong credentials      | Check mPIMA config and vsftpd users |
+| Export stuck at 0%       | Passive mode blocked   | Script auto-opens required ports    |
 
+---
+##🤝 Contributing
+1. Fork the repository
+
+2. Create a feature branch
+
+3. Submit a pull request
+---
+
+##👨‍💼 Maintainer
+Benson Okello
+Ministry of Health — Uganda
+
+---
+##📜 License
+MIT License
