@@ -80,26 +80,35 @@ The tool will guide you through:
 1. Environment Check
 
 i. Checks OS version
+
 ii. Validates user permissions
+
 iii. Confirms /srv/mpima-export exists
+
 iv. Confirms vsftpd is installed and configured
 
 2. Proxy Setup
 
 i. Creates FTP proxy rules
+
 ii. Ensures correct firewall rules
+
 iii. Restarts necessary services
 
 3. Export Validation
 
 i. Simulates mPIMA connection
+
 ii. Tests passive and active FTP
+
 iii. Validates folder write/read
 
 4. Diagnostics
 
 i. Runs SSH, FTP, and directory tests
+
 ii. Dumps logs into logs/
+
 iii. Produces a final status report
 
 ## 🧪 Simulation Mode
