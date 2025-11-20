@@ -124,7 +124,7 @@ To test without touching production:
 | Export stuck at 0%       | Passive mode blocked   | Script auto-opens required ports    |
 
 ---
-##🤝 Contributing
+## 🤝 Contributing
 1. Fork the repository
 
 2. Create a feature branch
@@ -132,10 +132,10 @@ To test without touching production:
 3. Submit a pull request
 ---
 
-##👨‍💼 Maintainer
+## 👨‍💼 Maintainer
 Benson Okello
 Ministry of Health — Uganda
 
 ---
-##📜 License
+## 📜 License
 MIT License
