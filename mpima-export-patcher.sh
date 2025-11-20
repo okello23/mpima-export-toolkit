@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-set -euo pipefail
+# ==========================================
+# MPIMA FTP Auto-Patcher
+# One-command setup for Ubuntu servers
+# Written by Benson Okello
+# ==========================================
 
-### Orchestrator for mpima → ALIS FTP setup (vsftpd)
-# Usage:
-#   sudo ./mpima-export-patcher.sh          # run for real
-#   sudo ./mpima-export-patcher.sh --simulate  # dry-run (no apt installs, no firewall)
+set -euo pipefail
 
 ROOT_REQUIRED=true
 SIMULATE=false
@@ -15,10 +16,10 @@ RUN_LOG="${LOGDIR}/run-${TIMESTAMP}.log"
 mkdir -p "${LOGDIR}"
 echo "Run started: $(date -u)" | tee -a "${RUN_LOG}"
 
+# Parse arguments
 for arg in "$@"; do
   case "$arg" in
-    --simulate) SIMULATE=true ;;
-    -n) SIMULATE=true ;;
+    --simulate|-n) SIMULATE=true ;;
   esac
 done
 
@@ -40,17 +41,13 @@ run_script() {
   echo "----> Completed ${SCRIPT}" | tee -a "${RUN_LOG}"
 }
 
-# Step 1
+# === Run Steps ===
 run_script "scripts/step1-check-environment.sh"
-
-# Step 2
-run_script "scripts/step2-setup-proxy.sh"
-
-# Step 3
-run_script "scripts/step3-validate-export.sh"
-
-# Step 4
-run_script "scripts/step4-run-diagnostics.sh"
+run_script "scripts/step2-install-vsftpd.sh"
+run_script "scripts/step3-fix-pam.sh"
+run_script "scripts/step4-firewall.sh"
+run_script "scripts/step5-finalize.sh"
 
 echo "Run finished: $(date -u)" | tee -a "${RUN_LOG}"
 echo "Logs saved to ${LOGDIR}/"
+

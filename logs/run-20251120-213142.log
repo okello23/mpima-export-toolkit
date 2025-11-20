@@ -1,0 +1,140 @@
+Run started: Lw4 20 Nov 2025 18:31:42 UTC
+SIMULATE=true
+----> Running scripts/step1-check-environment.sh
+=== STEP 1: Environment check ===
+Checking OS...
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 20.04.6 LTS
+Release:	20.04
+Codename:	focal
+Checking user...
+uid=0(root) gid=0(root) groups=0(root)
+Checking network interfaces...
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: wlp2s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether b4:0e:de:72:a5:42 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.86.249/24 brd 192.168.86.255 scope global dynamic noprefixroute wlp2s0
+       valid_lft 3305sec preferred_lft 3305sec
+    inet6 fe80::8b6b:a641:bb9e:50a6/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: virbr0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether 52:54:00:4b:ca:56 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.122.1/24 brd 192.168.122.255 scope global virbr0
+       valid_lft forever preferred_lft forever
+4: virbr0-nic: <BROADCAST,MULTICAST> mtu 1500 qdisc fq_codel master virbr0 state DOWN group default qlen 1000
+    link/ether 52:54:00:4b:ca:56 brd ff:ff:ff:ff:ff:ff
+5: br-c938ad7aa6cd: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 56:7a:72:e1:43:7d brd ff:ff:ff:ff:ff:ff
+    inet 172.19.0.1/16 brd 172.19.255.255 scope global br-c938ad7aa6cd
+       valid_lft forever preferred_lft forever
+6: br-9a1c2aee51b7: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 2a:fb:93:21:00:e5 brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-9a1c2aee51b7
+       valid_lft forever preferred_lft forever
+    inet6 fe80::28fb:93ff:fe21:e5/64 scope link 
+       valid_lft forever preferred_lft forever
+7: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 1a:6c:6f:6e:06:27 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+8: br-a41ae64a64a6: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 3e:43:db:50:6e:21 brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-a41ae64a64a6
+       valid_lft forever preferred_lft forever
+9: veth3ed0fd5@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-9a1c2aee51b7 state UP group default 
+    link/ether 66:d1:06:fa:e1:43 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::64d1:6ff:fefa:e143/64 scope link 
+       valid_lft forever preferred_lft forever
+10: veth00f8acd@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-9a1c2aee51b7 state UP group default 
+    link/ether ae:11:6c:40:2a:6d brd ff:ff:ff:ff:ff:ff link-netnsid 1
+    inet6 fe80::ac11:6cff:fe40:2a6d/64 scope link 
+       valid_lft forever preferred_lft forever
+11: vethaa8c76e@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-9a1c2aee51b7 state UP group default 
+    link/ether ae:36:86:56:8b:41 brd ff:ff:ff:ff:ff:ff link-netnsid 2
+    inet6 fe80::ac36:86ff:fe56:8b41/64 scope link 
+       valid_lft forever preferred_lft forever
+12: mpqemubr0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 52:54:00:ba:ad:de brd ff:ff:ff:ff:ff:ff
+    inet 10.203.98.1/24 brd 10.203.98.255 scope global mpqemubr0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:feba:adde/64 scope link 
+       valid_lft forever preferred_lft forever
+13: tap-4e59abb469f: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel master mpqemubr0 state UP group default qlen 1000
+    link/ether 9e:c1:90:06:3d:b0 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::9cc1:90ff:fe06:3db0/64 scope link 
+       valid_lft forever preferred_lft forever
+14: tap-d176b7d8f3c: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel master mpqemubr0 state UP group default qlen 1000
+    link/ether 02:d5:83:a9:38:5e brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::d5:83ff:fea9:385e/64 scope link 
+       valid_lft forever preferred_lft forever
+17: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default 
+    link/ether 66:9b:b5:8a:ae:70 brd ff:ff:ff:ff:ff:ff
+    inet 10.1.71.192/32 scope global vxlan.calico
+       valid_lft forever preferred_lft forever
+    inet6 fe80::649b:b5ff:fe8a:ae70/64 scope link 
+       valid_lft forever preferred_lft forever
+18: cali0057d484136@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default 
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-f313ff93-3a2e-edff-cc30-d99055713315
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link 
+       valid_lft forever preferred_lft forever
+19: calib8f7e87a111@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default 
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-6f41759e-bb6a-78ee-2242-c3a832c4a99f
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link 
+       valid_lft forever preferred_lft forever
+20: calife9b4eed744@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default 
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-f31272f8-9db4-d45c-d785-f7956d3144f0
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link 
+       valid_lft forever preferred_lft forever
+21: cali06aae75eb82@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default 
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-20c5ae8e-ea8f-0aa0-1a82-88b3a19cb493
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link 
+       valid_lft forever preferred_lft forever
+22: calie44c1b6222d@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default 
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-a98b64ce-a79b-6a96-a37a-7b62614e85b0
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link 
+       valid_lft forever preferred_lft forever
+23: cali80e4c39db4d@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default 
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-b1a252c6-ba9d-2aed-41c8-5e2e5ef8ddf2
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link 
+       valid_lft forever preferred_lft forever
+24: cali147085b21eb@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default 
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-8816367e-ecee-a5f3-8b17-27492a0cbfc4
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link 
+       valid_lft forever preferred_lft forever
+Checking existing vsftpd installation...
+STEP 1 completed.
+----> Completed scripts/step1-check-environment.sh
+----> Running scripts/step2-install-vsftpd.sh
+=== STEP 2: Installing vsftpd ===
+[SIMULATOR] Would run: sudo apt update && sudo apt install -y vsftpd
+User mpima exists, skipping creation
+[SIMULATOR] Would create /srv/mpima-export and set ownership
+----> Completed scripts/step2-install-vsftpd.sh
+----> Running scripts/step3-fix-pam.sh
+=== STEP 3: Fix PAM for vsftpd ===
+[SIMULATOR] Would overwrite /etc/pam.d/vsftpd
+----> Completed scripts/step3-fix-pam.sh
+----> Running scripts/step4-firewall.sh
+=== STEP 4: Firewall configuration ===
+[SIMULATOR] Would allow ports 2121 and 40000-40050
+----> Completed scripts/step4-firewall.sh
+----> Running scripts/step5-finalize.sh
+=== STEP 5: Finalize and restart vsftpd ===
+[SIMULATOR] Would create /var/log/vsftpd.log and restart vsftpd
+[SIMULATOR] Would add mpima to /etc/vsftpd.userlist
+===============================
+Setup complete!
+FTP Server ready on port 2121
+Upload directory: /srv/mpima-export
+User: mpima
+
+Run: sudo passwd mpima  # to set password
+Test: ftp <server-ip> 2121
+----> Completed scripts/step5-finalize.sh
+Run finished: Lw4 20 Nov 2025 18:31:42 UTC

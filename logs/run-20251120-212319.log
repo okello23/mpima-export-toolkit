@@ -1,0 +1,115 @@
+Run started: Lw4 20 Nov 2025 18:23:19 UTC
+SIMULATE=false
+----> Running scripts/step1-check-environment.sh
+STEP 1: Environment check
+Date: Lw4 20 Nov 2025 18:23:19 UTC
+Checking OS...
+Distributor ID:	Ubuntu
+Description:	Ubuntu 20.04.6 LTS
+Release:	20.04
+Codename:	focal
+Checking user (must be root)...
+UID=0   USER=root
+Checking network interfaces...
+1: [36mlo: [0m<LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback [33m00:00:00:00:00:00[0m brd [33m00:00:00:00:00:00[0m
+    inet [35m127.0.0.1[0m/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 [34m::1[0m/128 scope host 
+       valid_lft forever preferred_lft forever
+2: [36mwlp2s0: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state [32mUP [0mgroup default qlen 1000
+    link/ether [33mb4:0e:de:72:a5:42[0m brd [33mff:ff:ff:ff:ff:ff[0m
+    inet [35m192.168.86.249[0m/24 brd [35m192.168.86.255 [0mscope global dynamic noprefixroute wlp2s0
+       valid_lft 2009sec preferred_lft 2009sec
+    inet6 [34mfe80::8b6b:a641:bb9e:50a6[0m/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: [36mvirbr0: [0m<NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state [31mDOWN [0mgroup default qlen 1000
+    link/ether [33m52:54:00:4b:ca:56[0m brd [33mff:ff:ff:ff:ff:ff[0m
+    inet [35m192.168.122.1[0m/24 brd [35m192.168.122.255 [0mscope global virbr0
+       valid_lft forever preferred_lft forever
+4: [36mvirbr0-nic: [0m<BROADCAST,MULTICAST> mtu 1500 qdisc fq_codel master virbr0 state [31mDOWN [0mgroup default qlen 1000
+    link/ether [33m52:54:00:4b:ca:56[0m brd [33mff:ff:ff:ff:ff:ff[0m
+5: [36mbr-c938ad7aa6cd: [0m<NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state [31mDOWN [0mgroup default 
+    link/ether [33m56:7a:72:e1:43:7d[0m brd [33mff:ff:ff:ff:ff:ff[0m
+    inet [35m172.19.0.1[0m/16 brd [35m172.19.255.255 [0mscope global br-c938ad7aa6cd
+       valid_lft forever preferred_lft forever
+6: [36mbr-9a1c2aee51b7: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state [32mUP [0mgroup default 
+    link/ether [33m2a:fb:93:21:00:e5[0m brd [33mff:ff:ff:ff:ff:ff[0m
+    inet [35m172.20.0.1[0m/16 brd [35m172.20.255.255 [0mscope global br-9a1c2aee51b7
+       valid_lft forever preferred_lft forever
+    inet6 [34mfe80::28fb:93ff:fe21:e5[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+7: [36mdocker0: [0m<NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state [31mDOWN [0mgroup default 
+    link/ether [33m1a:6c:6f:6e:06:27[0m brd [33mff:ff:ff:ff:ff:ff[0m
+    inet [35m172.17.0.1[0m/16 brd [35m172.17.255.255 [0mscope global docker0
+       valid_lft forever preferred_lft forever
+8: [36mbr-a41ae64a64a6: [0m<NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state [31mDOWN [0mgroup default 
+    link/ether [33m3e:43:db:50:6e:21[0m brd [33mff:ff:ff:ff:ff:ff[0m
+    inet [35m172.18.0.1[0m/16 brd [35m172.18.255.255 [0mscope global br-a41ae64a64a6
+       valid_lft forever preferred_lft forever
+9: [36mveth3ed0fd5@if2: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-9a1c2aee51b7 state [32mUP [0mgroup default 
+    link/ether [33m66:d1:06:fa:e1:43[0m brd [33mff:ff:ff:ff:ff:ff[0m link-netnsid 0
+    inet6 [34mfe80::64d1:6ff:fefa:e143[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+10: [36mveth00f8acd@if2: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-9a1c2aee51b7 state [32mUP [0mgroup default 
+    link/ether [33mae:11:6c:40:2a:6d[0m brd [33mff:ff:ff:ff:ff:ff[0m link-netnsid 1
+    inet6 [34mfe80::ac11:6cff:fe40:2a6d[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+11: [36mvethaa8c76e@if2: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-9a1c2aee51b7 state [32mUP [0mgroup default 
+    link/ether [33mae:36:86:56:8b:41[0m brd [33mff:ff:ff:ff:ff:ff[0m link-netnsid 2
+    inet6 [34mfe80::ac36:86ff:fe56:8b41[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+12: [36mmpqemubr0: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state [32mUP [0mgroup default qlen 1000
+    link/ether [33m52:54:00:ba:ad:de[0m brd [33mff:ff:ff:ff:ff:ff[0m
+    inet [35m10.203.98.1[0m/24 brd [35m10.203.98.255 [0mscope global mpqemubr0
+       valid_lft forever preferred_lft forever
+    inet6 [34mfe80::5054:ff:feba:adde[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+13: [36mtap-4e59abb469f: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel master mpqemubr0 state [32mUP [0mgroup default qlen 1000
+    link/ether [33m9e:c1:90:06:3d:b0[0m brd [33mff:ff:ff:ff:ff:ff[0m
+    inet6 [34mfe80::9cc1:90ff:fe06:3db0[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+14: [36mtap-d176b7d8f3c: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel master mpqemubr0 state [32mUP [0mgroup default qlen 1000
+    link/ether [33m02:d5:83:a9:38:5e[0m brd [33mff:ff:ff:ff:ff:ff[0m
+    inet6 [34mfe80::d5:83ff:fea9:385e[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+17: [36mvxlan.calico: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default 
+    link/ether [33m66:9b:b5:8a:ae:70[0m brd [33mff:ff:ff:ff:ff:ff[0m
+    inet [35m10.1.71.192[0m/32 scope global vxlan.calico
+       valid_lft forever preferred_lft forever
+    inet6 [34mfe80::649b:b5ff:fe8a:ae70[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+18: [36mcali0057d484136@if3: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state [32mUP [0mgroup default 
+    link/ether [33mee:ee:ee:ee:ee:ee[0m brd [33mff:ff:ff:ff:ff:ff[0m link-netns cni-f313ff93-3a2e-edff-cc30-d99055713315
+    inet6 [34mfe80::ecee:eeff:feee:eeee[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+19: [36mcalib8f7e87a111@if3: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state [32mUP [0mgroup default 
+    link/ether [33mee:ee:ee:ee:ee:ee[0m brd [33mff:ff:ff:ff:ff:ff[0m link-netns cni-6f41759e-bb6a-78ee-2242-c3a832c4a99f
+    inet6 [34mfe80::ecee:eeff:feee:eeee[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+20: [36mcalife9b4eed744@if3: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state [32mUP [0mgroup default 
+    link/ether [33mee:ee:ee:ee:ee:ee[0m brd [33mff:ff:ff:ff:ff:ff[0m link-netns cni-f31272f8-9db4-d45c-d785-f7956d3144f0
+    inet6 [34mfe80::ecee:eeff:feee:eeee[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+21: [36mcali06aae75eb82@if3: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state [32mUP [0mgroup default 
+    link/ether [33mee:ee:ee:ee:ee:ee[0m brd [33mff:ff:ff:ff:ff:ff[0m link-netns cni-20c5ae8e-ea8f-0aa0-1a82-88b3a19cb493
+    inet6 [34mfe80::ecee:eeff:feee:eeee[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+22: [36mcalie44c1b6222d@if3: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state [32mUP [0mgroup default 
+    link/ether [33mee:ee:ee:ee:ee:ee[0m brd [33mff:ff:ff:ff:ff:ff[0m link-netns cni-a98b64ce-a79b-6a96-a37a-7b62614e85b0
+    inet6 [34mfe80::ecee:eeff:feee:eeee[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+23: [36mcali80e4c39db4d@if3: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state [32mUP [0mgroup default 
+    link/ether [33mee:ee:ee:ee:ee:ee[0m brd [33mff:ff:ff:ff:ff:ff[0m link-netns cni-b1a252c6-ba9d-2aed-41c8-5e2e5ef8ddf2
+    inet6 [34mfe80::ecee:eeff:feee:eeee[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+24: [36mcali147085b21eb@if3: [0m<BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state [32mUP [0mgroup default 
+    link/ether [33mee:ee:ee:ee:ee:ee[0m brd [33mff:ff:ff:ff:ff:ff[0m link-netns cni-8816367e-ecee-a5f3-8b17-27492a0cbfc4
+    inet6 [34mfe80::ecee:eeff:feee:eeee[0m/64 scope link 
+       valid_lft forever preferred_lft forever
+Checking existing vsftpd installation...
+Checking UFW status...
+Status: inactive
+Checking mpima user...
+mpima:x:1001:1002:mpima,,,:/srv/mpima-export:/usr/sbin/nologin
+STEP 1 completed.
