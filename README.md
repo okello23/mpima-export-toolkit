@@ -58,8 +58,7 @@ git clone https://github.com/<your-org>/mpima-alis-export-patcher.git
 cd mpima-alis-export-patcher
 
 ### **Step 2 — Make the scripts executable**
-chmod +x *.sh scripts/*.sh
-
+chmod +x scripts/*.sh
 
 ### **Step 3 — Run the orchestrator**
 sudo ./mpima-export-patcher.sh
